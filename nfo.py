@@ -33,6 +33,18 @@ import utils
 
 class NfoLabels:
     def __init__(self, nfo_path = None):
+        try:
+            season = int(xbmc.getInfoLabel( "ListItem.Season" ) or "-1")
+        except:
+            season = "-1"
+        try:
+            episode = int(xbmc.getInfoLabel( "ListItem.Episode" ) or "-1")
+        except:
+            episode = "-1"
+        try:
+            year = int(xbmc.getInfoLabel( "ListItem.Year" ) or "-1")
+        except:
+            year = "-1"
         info_labels = {
             'size' : unicode(xbmc.getInfoLabel( "ListItem.Size" ), 'utf-8'),
             'tvshowtitle': unicode(xbmc.getInfoLabel( "ListItem.TvShowTitle" ), 'utf-8'),
@@ -47,9 +59,9 @@ class NfoLabels:
             'cast': unicode(xbmc.getInfoLabel( "ListItem.Cast" ), 'utf-8'),
             'writer': unicode(xbmc.getInfoLabel( "ListItem.Writer" ), 'utf-8'),
             'director': unicode(xbmc.getInfoLabel( "ListItem.Director" ), 'utf-8'),
-            'season': int(xbmc.getInfoLabel( "ListItem.Season" ) or "-1"),
-            'episode': int(xbmc.getInfoLabel( "ListItem.Episode" ) or "-1"),
-            'year': int(xbmc.getInfoLabel( "ListItem.Year" ) or "-1"),
+            'season': season,
+            'episode': episode,
+            'year': year,
             }
         # Clear empty keys
         for key in info_labels.keys():
